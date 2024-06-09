@@ -28,37 +28,19 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             ""id"": ""50934141-da1c-4faf-b357-0f5c6bc19e6d"",
             ""actions"": [
                 {
-                    ""name"": ""TapAction"",
+                    ""name"": ""TouchPress"",
                     ""type"": ""Button"",
-                    ""id"": ""9c07ab25-d372-4340-86d7-978d1b2ede5a"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Tap"",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Hold"",
-                    ""type"": ""Button"",
-                    ""id"": ""cb0eabb3-9f1c-4f9c-bc13-6ec686f2912c"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Hold"",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Press"",
-                    ""type"": ""Button"",
-                    ""id"": ""09bd3687-6177-4277-b8d6-818e82e99834"",
+                    ""id"": ""68414ffd-58c3-4493-8936-f3e73a6a3b16"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press(behavior=2)"",
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Slowtap"",
-                    ""type"": ""Button"",
-                    ""id"": ""fb8dfe4e-87a1-4567-a3e0-6ffb1f32cab6"",
-                    ""expectedControlType"": ""Button"",
+                    ""name"": ""TouchPosition"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""79670f0e-861f-4a99-b6d7-9ba7cd6b48c0"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -67,45 +49,23 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""0a596797-8565-4812-8a29-51b9996c174d"",
-                    ""path"": ""<Touchscreen>/touch1/tap"",
+                    ""id"": ""69c534e4-0442-44af-a22b-b41fb98be77c"",
+                    ""path"": ""<Touchscreen>/primaryTouch/press"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""TapAction"",
+                    ""action"": ""TouchPress"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""d3699035-f8ef-49f3-8309-d7fd1212e84e"",
-                    ""path"": ""<Touchscreen>/Press"",
-                    ""interactions"": ""Hold"",
+                    ""id"": ""4f8a787c-c78a-43fe-80ef-3f2448434fa5"",
+                    ""path"": ""<Touchscreen>/primaryTouch/position"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Hold"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""039bde35-34da-4070-977c-ff9ce578e488"",
-                    ""path"": ""<Touchscreen>/Press"",
-                    ""interactions"": ""Press(behavior=2)"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Press"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""39d34dca-6985-4f48-905a-5691745c3fcc"",
-                    ""path"": ""<Touchscreen>/Press"",
-                    ""interactions"": ""SlowTap"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Slowtap"",
+                    ""action"": ""TouchPosition"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -116,10 +76,8 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
 }");
         // Map
         m_Map = asset.FindActionMap("Map", throwIfNotFound: true);
-        m_Map_TapAction = m_Map.FindAction("TapAction", throwIfNotFound: true);
-        m_Map_Hold = m_Map.FindAction("Hold", throwIfNotFound: true);
-        m_Map_Press = m_Map.FindAction("Press", throwIfNotFound: true);
-        m_Map_Slowtap = m_Map.FindAction("Slowtap", throwIfNotFound: true);
+        m_Map_TouchPress = m_Map.FindAction("TouchPress", throwIfNotFound: true);
+        m_Map_TouchPosition = m_Map.FindAction("TouchPosition", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -181,18 +139,14 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     // Map
     private readonly InputActionMap m_Map;
     private List<IMapActions> m_MapActionsCallbackInterfaces = new List<IMapActions>();
-    private readonly InputAction m_Map_TapAction;
-    private readonly InputAction m_Map_Hold;
-    private readonly InputAction m_Map_Press;
-    private readonly InputAction m_Map_Slowtap;
+    private readonly InputAction m_Map_TouchPress;
+    private readonly InputAction m_Map_TouchPosition;
     public struct MapActions
     {
         private @InputActions m_Wrapper;
         public MapActions(@InputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @TapAction => m_Wrapper.m_Map_TapAction;
-        public InputAction @Hold => m_Wrapper.m_Map_Hold;
-        public InputAction @Press => m_Wrapper.m_Map_Press;
-        public InputAction @Slowtap => m_Wrapper.m_Map_Slowtap;
+        public InputAction @TouchPress => m_Wrapper.m_Map_TouchPress;
+        public InputAction @TouchPosition => m_Wrapper.m_Map_TouchPosition;
         public InputActionMap Get() { return m_Wrapper.m_Map; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -202,34 +156,22 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_MapActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_MapActionsCallbackInterfaces.Add(instance);
-            @TapAction.started += instance.OnTapAction;
-            @TapAction.performed += instance.OnTapAction;
-            @TapAction.canceled += instance.OnTapAction;
-            @Hold.started += instance.OnHold;
-            @Hold.performed += instance.OnHold;
-            @Hold.canceled += instance.OnHold;
-            @Press.started += instance.OnPress;
-            @Press.performed += instance.OnPress;
-            @Press.canceled += instance.OnPress;
-            @Slowtap.started += instance.OnSlowtap;
-            @Slowtap.performed += instance.OnSlowtap;
-            @Slowtap.canceled += instance.OnSlowtap;
+            @TouchPress.started += instance.OnTouchPress;
+            @TouchPress.performed += instance.OnTouchPress;
+            @TouchPress.canceled += instance.OnTouchPress;
+            @TouchPosition.started += instance.OnTouchPosition;
+            @TouchPosition.performed += instance.OnTouchPosition;
+            @TouchPosition.canceled += instance.OnTouchPosition;
         }
 
         private void UnregisterCallbacks(IMapActions instance)
         {
-            @TapAction.started -= instance.OnTapAction;
-            @TapAction.performed -= instance.OnTapAction;
-            @TapAction.canceled -= instance.OnTapAction;
-            @Hold.started -= instance.OnHold;
-            @Hold.performed -= instance.OnHold;
-            @Hold.canceled -= instance.OnHold;
-            @Press.started -= instance.OnPress;
-            @Press.performed -= instance.OnPress;
-            @Press.canceled -= instance.OnPress;
-            @Slowtap.started -= instance.OnSlowtap;
-            @Slowtap.performed -= instance.OnSlowtap;
-            @Slowtap.canceled -= instance.OnSlowtap;
+            @TouchPress.started -= instance.OnTouchPress;
+            @TouchPress.performed -= instance.OnTouchPress;
+            @TouchPress.canceled -= instance.OnTouchPress;
+            @TouchPosition.started -= instance.OnTouchPosition;
+            @TouchPosition.performed -= instance.OnTouchPosition;
+            @TouchPosition.canceled -= instance.OnTouchPosition;
         }
 
         public void RemoveCallbacks(IMapActions instance)
@@ -249,9 +191,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     public MapActions @Map => new MapActions(this);
     public interface IMapActions
     {
-        void OnTapAction(InputAction.CallbackContext context);
-        void OnHold(InputAction.CallbackContext context);
-        void OnPress(InputAction.CallbackContext context);
-        void OnSlowtap(InputAction.CallbackContext context);
+        void OnTouchPress(InputAction.CallbackContext context);
+        void OnTouchPosition(InputAction.CallbackContext context);
     }
 }
