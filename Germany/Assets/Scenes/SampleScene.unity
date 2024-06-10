@@ -424,6 +424,7 @@ GameObject:
   - component: {fileID: 223713605}
   - component: {fileID: 223713604}
   - component: {fileID: 223713606}
+  - component: {fileID: 223713607}
   m_Layer: 0
   m_Name: TestDirDist
   m_TagString: Untagged
@@ -487,19 +488,7 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 223713604}
-        m_TargetAssemblyTypeName: TestDirDist, Assembly-CSharp
-        m_MethodName: SetInitialPos
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 9932816d-a0d7-40af-a485-db21a9026265
     m_ActionName: Drag/Tap[/Mouse/leftButton]
   - m_PersistentCalls:
@@ -511,6 +500,20 @@ MonoBehaviour:
   m_DefaultActionMap: Drag
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &223713607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223713603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8be95b541eb1ac4383dd61cdb587ce5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handler: {fileID: 146599418}
+  playerInput: {fileID: 223713606}
 --- !u!1 &300018507
 GameObject:
   m_ObjectHideFlags: 0

@@ -31,9 +31,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""name"": ""Tap"",
                     ""type"": ""Value"",
                     ""id"": ""9932816d-a0d7-40af-a485-db21a9026265"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
-                    ""interactions"": ""Tap"",
+                    ""interactions"": """",
                     ""initialStateCheck"": true
                 },
                 {
@@ -42,7 +42,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""id"": ""f31d8924-bfe0-47c5-a809-746ca28a139d"",
                     ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": ""Press"",
+                    ""interactions"": """",
                     ""initialStateCheck"": true
                 }
             ],
@@ -50,7 +50,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""75585e85-b9c6-4c9b-ba93-c0237c32b651"",
-                    ""path"": ""<Touchscreen>/primaryTouch/startPosition"",
+                    ""path"": ""<Touchscreen>/position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -61,7 +61,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""a2b3602d-ec96-458d-b264-6a1ec6f2c1d4"",
-                    ""path"": ""<Touchscreen>/position"",
+                    ""path"": ""<Touchscreen>/Press"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

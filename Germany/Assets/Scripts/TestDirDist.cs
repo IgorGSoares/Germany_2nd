@@ -27,11 +27,11 @@ public class TestDirDist : MonoBehaviour
         Debug.Log(result * 100);
     }
 
-    public void SetInitialPos(InputAction.CallbackContext context)
-    {
-        var value = context.ReadValue<Vector2>();
-        PointC.gameObject.SetActive(context.action.IsPressed());
-        PointC.position = value;
-        Debug.Log(value);
-    }
+    // public void SetInitialPos(InputAction.CallbackContext context)
+    // {
+    //     var value = context.ReadValue<Vector2>();
+    //     PointC.gameObject.SetActive(context.action.IsPressed());
+    //     PointC.position = value;
+    //     Debug.Log(value);
+    // }
 }
