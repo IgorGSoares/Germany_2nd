@@ -10,10 +10,12 @@ public class TouchManager : MonoBehaviour
 
     private InputAction touchPosAction;
     private InputAction touchPressAction;
+    private InputAction touchDragAction;
 
     private void Awake() {
         touchPosAction = playerInput.actions["Tap"];
         touchPressAction = playerInput.actions["Press"];
+        touchDragAction = playerInput.actions["Drag"];
     }
 
     private void OnEnable() {

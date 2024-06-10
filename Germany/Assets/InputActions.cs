@@ -44,6 +44,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Drag"",
+                    ""type"": ""Value"",
+                    ""id"": ""cdc973c7-6ed1-42d0-abfe-04fe4c60fe9b"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": ""SlowTap"",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -68,6 +77,17 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Press"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7aede6ab-4649-470b-903d-63d05988cbe2"",
+                    ""path"": ""<Touchscreen>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Drag"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -78,6 +98,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_Drag = asset.FindActionMap("Drag", throwIfNotFound: true);
         m_Drag_Tap = m_Drag.FindAction("Tap", throwIfNotFound: true);
         m_Drag_Press = m_Drag.FindAction("Press", throwIfNotFound: true);
+        m_Drag_Drag = m_Drag.FindAction("Drag", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -141,12 +162,14 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private List<IDragActions> m_DragActionsCallbackInterfaces = new List<IDragActions>();
     private readonly InputAction m_Drag_Tap;
     private readonly InputAction m_Drag_Press;
+    private readonly InputAction m_Drag_Drag;
     public struct DragActions
     {
         private @InputActions m_Wrapper;
         public DragActions(@InputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Tap => m_Wrapper.m_Drag_Tap;
         public InputAction @Press => m_Wrapper.m_Drag_Press;
+        public InputAction @Drag => m_Wrapper.m_Drag_Drag;
         public InputActionMap Get() { return m_Wrapper.m_Drag; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -162,6 +185,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Press.started += instance.OnPress;
             @Press.performed += instance.OnPress;
             @Press.canceled += instance.OnPress;
+            @Drag.started += instance.OnDrag;
+            @Drag.performed += instance.OnDrag;
+            @Drag.canceled += instance.OnDrag;
         }
 
         private void UnregisterCallbacks(IDragActions instance)
@@ -172,6 +198,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Press.started -= instance.OnPress;
             @Press.performed -= instance.OnPress;
             @Press.canceled -= instance.OnPress;
+            @Drag.started -= instance.OnDrag;
+            @Drag.performed -= instance.OnDrag;
+            @Drag.canceled -= instance.OnDrag;
         }
 
         public void RemoveCallbacks(IDragActions instance)
@@ -193,5 +222,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     {
         void OnTap(InputAction.CallbackContext context);
         void OnPress(InputAction.CallbackContext context);
+        void OnDrag(InputAction.CallbackContext context);
     }
 }
