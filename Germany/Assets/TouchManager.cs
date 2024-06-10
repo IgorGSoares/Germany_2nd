@@ -20,18 +20,32 @@ public class TouchManager : MonoBehaviour
 
     private void OnEnable() {
         touchPressAction.performed += TouchPressed;
+        touchDragAction.performed += TouchDragPerformed;
+        touchDragAction.canceled += TouchDragCanceled;
     }
 
     private void OnDisable() {
         touchPressAction.performed -= TouchPressed;
+        touchDragAction.performed -= TouchDragPerformed;
+        touchDragAction.canceled -= TouchDragCanceled;
     }
 
     private void TouchPressed(InputAction.CallbackContext context)
     {
         Vector2 pos = touchPosAction.ReadValue<Vector2>();
         pos = Camera.main.ScreenToWorldPoint(pos);
-        handler.SetActive(true);
+        //handler.SetActive(true);
         handler.transform.position = pos;
+    }
+
+    void TouchDragPerformed(InputAction.CallbackContext context)
+    {
+        Debug.Log("begin");
+    }
+
+    void TouchDragCanceled(InputAction.CallbackContext context)
+    {
+        Debug.Log("end");
     }
 
     // private void Update() {
