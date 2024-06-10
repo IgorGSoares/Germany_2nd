@@ -24,48 +24,48 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     ""name"": ""InputActions"",
     ""maps"": [
         {
-            ""name"": ""Map"",
-            ""id"": ""50934141-da1c-4faf-b357-0f5c6bc19e6d"",
+            ""name"": ""Drag"",
+            ""id"": ""f348dd95-7ee8-46b3-878b-9f32727b8256"",
             ""actions"": [
                 {
-                    ""name"": ""TouchPress"",
-                    ""type"": ""Button"",
-                    ""id"": ""68414ffd-58c3-4493-8936-f3e73a6a3b16"",
-                    ""expectedControlType"": ""Button"",
+                    ""name"": ""Tap"",
+                    ""type"": ""Value"",
+                    ""id"": ""9932816d-a0d7-40af-a485-db21a9026265"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": ""Press(behavior=2)"",
-                    ""initialStateCheck"": false
+                    ""interactions"": ""Tap"",
+                    ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""TouchPosition"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""79670f0e-861f-4a99-b6d7-9ba7cd6b48c0"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""name"": ""Press"",
+                    ""type"": ""Value"",
+                    ""id"": ""f31d8924-bfe0-47c5-a809-746ca28a139d"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""69c534e4-0442-44af-a22b-b41fb98be77c"",
-                    ""path"": ""<Touchscreen>/primaryTouch/press"",
+                    ""id"": ""75585e85-b9c6-4c9b-ba93-c0237c32b651"",
+                    ""path"": ""<Touchscreen>/primaryTouch/startPosition"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""TouchPress"",
+                    ""action"": ""Tap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""4f8a787c-c78a-43fe-80ef-3f2448434fa5"",
-                    ""path"": ""<Touchscreen>/primaryTouch/position"",
+                    ""id"": ""a2b3602d-ec96-458d-b264-6a1ec6f2c1d4"",
+                    ""path"": ""<Touchscreen>/position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""TouchPosition"",
+                    ""action"": ""Press"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -74,10 +74,10 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     ],
     ""controlSchemes"": []
 }");
-        // Map
-        m_Map = asset.FindActionMap("Map", throwIfNotFound: true);
-        m_Map_TouchPress = m_Map.FindAction("TouchPress", throwIfNotFound: true);
-        m_Map_TouchPosition = m_Map.FindAction("TouchPosition", throwIfNotFound: true);
+        // Drag
+        m_Drag = asset.FindActionMap("Drag", throwIfNotFound: true);
+        m_Drag_Tap = m_Drag.FindAction("Tap", throwIfNotFound: true);
+        m_Drag_Press = m_Drag.FindAction("Press", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -136,62 +136,62 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Map
-    private readonly InputActionMap m_Map;
-    private List<IMapActions> m_MapActionsCallbackInterfaces = new List<IMapActions>();
-    private readonly InputAction m_Map_TouchPress;
-    private readonly InputAction m_Map_TouchPosition;
-    public struct MapActions
+    // Drag
+    private readonly InputActionMap m_Drag;
+    private List<IDragActions> m_DragActionsCallbackInterfaces = new List<IDragActions>();
+    private readonly InputAction m_Drag_Tap;
+    private readonly InputAction m_Drag_Press;
+    public struct DragActions
     {
         private @InputActions m_Wrapper;
-        public MapActions(@InputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @TouchPress => m_Wrapper.m_Map_TouchPress;
-        public InputAction @TouchPosition => m_Wrapper.m_Map_TouchPosition;
-        public InputActionMap Get() { return m_Wrapper.m_Map; }
+        public DragActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Tap => m_Wrapper.m_Drag_Tap;
+        public InputAction @Press => m_Wrapper.m_Drag_Press;
+        public InputActionMap Get() { return m_Wrapper.m_Drag; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(MapActions set) { return set.Get(); }
-        public void AddCallbacks(IMapActions instance)
+        public static implicit operator InputActionMap(DragActions set) { return set.Get(); }
+        public void AddCallbacks(IDragActions instance)
         {
-            if (instance == null || m_Wrapper.m_MapActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_MapActionsCallbackInterfaces.Add(instance);
-            @TouchPress.started += instance.OnTouchPress;
-            @TouchPress.performed += instance.OnTouchPress;
-            @TouchPress.canceled += instance.OnTouchPress;
-            @TouchPosition.started += instance.OnTouchPosition;
-            @TouchPosition.performed += instance.OnTouchPosition;
-            @TouchPosition.canceled += instance.OnTouchPosition;
+            if (instance == null || m_Wrapper.m_DragActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_DragActionsCallbackInterfaces.Add(instance);
+            @Tap.started += instance.OnTap;
+            @Tap.performed += instance.OnTap;
+            @Tap.canceled += instance.OnTap;
+            @Press.started += instance.OnPress;
+            @Press.performed += instance.OnPress;
+            @Press.canceled += instance.OnPress;
         }
 
-        private void UnregisterCallbacks(IMapActions instance)
+        private void UnregisterCallbacks(IDragActions instance)
         {
-            @TouchPress.started -= instance.OnTouchPress;
-            @TouchPress.performed -= instance.OnTouchPress;
-            @TouchPress.canceled -= instance.OnTouchPress;
-            @TouchPosition.started -= instance.OnTouchPosition;
-            @TouchPosition.performed -= instance.OnTouchPosition;
-            @TouchPosition.canceled -= instance.OnTouchPosition;
+            @Tap.started -= instance.OnTap;
+            @Tap.performed -= instance.OnTap;
+            @Tap.canceled -= instance.OnTap;
+            @Press.started -= instance.OnPress;
+            @Press.performed -= instance.OnPress;
+            @Press.canceled -= instance.OnPress;
         }
 
-        public void RemoveCallbacks(IMapActions instance)
+        public void RemoveCallbacks(IDragActions instance)
         {
-            if (m_Wrapper.m_MapActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_DragActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(IMapActions instance)
+        public void SetCallbacks(IDragActions instance)
         {
-            foreach (var item in m_Wrapper.m_MapActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_DragActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_MapActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_DragActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public MapActions @Map => new MapActions(this);
-    public interface IMapActions
+    public DragActions @Drag => new DragActions(this);
+    public interface IDragActions
     {
-        void OnTouchPress(InputAction.CallbackContext context);
-        void OnTouchPosition(InputAction.CallbackContext context);
+        void OnTap(InputAction.CallbackContext context);
+        void OnPress(InputAction.CallbackContext context);
     }
 }

@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class TestDirDist : MonoBehaviour
 {
     [SerializeField] Transform PointA;
     [SerializeField] Transform PointB;
+    [SerializeField] Transform PointC;
+
+    Vector2 initialPos;
+    Vector2 finalPos;
 
     [ContextMenu("CalculateDirection")]
     public void CalculateDirection()
@@ -20,5 +25,13 @@ public class TestDirDist : MonoBehaviour
     {
         var result = Vector2.Distance(PointA.position, PointB.position);
         Debug.Log(result * 100);
+    }
+
+    public void SetInitialPos(InputAction.CallbackContext context)
+    {
+        var value = context.ReadValue<Vector2>();
+        PointC.gameObject.SetActive(context.action.IsPressed());
+        PointC.position = value;
+        Debug.Log(value);
     }
 }
