@@ -2,68 +2,28 @@
     "name": "InputActions",
     "maps": [
         {
-            "name": "Drag",
+            "name": "Map",
             "id": "f348dd95-7ee8-46b3-878b-9f32727b8256",
             "actions": [
                 {
-                    "name": "Tap",
+                    "name": "Hold",
                     "type": "Value",
-                    "id": "9932816d-a0d7-40af-a485-db21a9026265",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "Press",
-                    "type": "Value",
-                    "id": "f31d8924-bfe0-47c5-a809-746ca28a139d",
+                    "id": "87ca382e-da95-4d59-ad5a-cd193bccbebe",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "Drag",
-                    "type": "Value",
-                    "id": "cdc973c7-6ed1-42d0-abfe-04fe4c60fe9b",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "SlowTap",
+                    "interactions": "Hold",
                     "initialStateCheck": true
                 }
             ],
             "bindings": [
                 {
                     "name": "",
-                    "id": "75585e85-b9c6-4c9b-ba93-c0237c32b651",
-                    "path": "<Touchscreen>/position",
+                    "id": "03b2506d-fe48-484e-b62b-461ab09db508",
+                    "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Tap",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a2b3602d-ec96-458d-b264-6a1ec6f2c1d4",
-                    "path": "<Touchscreen>/Press",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Press",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7aede6ab-4649-470b-903d-63d05988cbe2",
-                    "path": "<Touchscreen>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Drag",
+                    "action": "Hold",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
