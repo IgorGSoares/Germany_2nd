@@ -5,7 +5,7 @@ using UnityEngine;
 public class SetJoystickValue : MonoBehaviour
 {
     [SerializeField] FixedJoystick fixedJoystick;
-    [SerializeField] InitialControl control;
+    [SerializeField] GameControls control;
     [SerializeField] float multiplyer;
 
     private void OnEnable() {
