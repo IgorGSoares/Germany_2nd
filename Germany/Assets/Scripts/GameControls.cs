@@ -16,6 +16,15 @@ public class GameControls : MonoBehaviour
     [SerializeField] Color startColor;
     [SerializeField] Color endColor;
 
+    [Space]
+    [SerializeField] Transform PointA;
+    [SerializeField] Transform PointB;
+    [SerializeField] GameObject joystick;
+    [SerializeField] GameObject buttonForce;
+
+    [Space]
+    [SerializeField] float forceDivisor = 2;
+
     bool isPressed = false;
     float forceValue = 0f;
 
@@ -42,7 +51,11 @@ public class GameControls : MonoBehaviour
         {
             if (forceValue != 0) //TODO: adicionar direção e desativar botões
             {
-                playerRB.AddForce(transform.up * forceValue/2, ForceMode2D.Impulse);
+                var dir = CalculateDirection();
+                playerRB.AddForce(dir * forceValue/forceDivisor * -1, ForceMode2D.Impulse);
+                joystick.SetActive(false);
+                buttonForce.SetActive(false);
+                target.gameObject.SetActive(false);
             }
 
             forceBar.SetActive(false);
@@ -68,5 +81,12 @@ public class GameControls : MonoBehaviour
         // if(v <= 0.25f) forceBarImg.color = Color.yellow;
         // if(v > 0.25f && v <= 0.5f) forceBarImg.color = Color.orange;
         // if(v > 0.5f && v <= 1f) forceBarImg.color = Color.red;
+    }
+
+    private Vector2 CalculateDirection()
+    {
+        var dir = (PointA.position - PointB.position).normalized;
+        
+        return new Vector2(dir.x, dir.y);
     }
 }
