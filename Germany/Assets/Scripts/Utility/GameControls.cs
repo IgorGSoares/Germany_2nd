@@ -24,6 +24,7 @@ public class GameControls : MonoBehaviour
 
     [Space]
     [SerializeField] float forceDivisor = 2;
+    [SerializeField] TriggerCameraMove triggerCameraMove;
 
     bool isPressed = false;
     float forceValue = 0f;
@@ -56,12 +57,16 @@ public class GameControls : MonoBehaviour
                 joystick.SetActive(false);
                 buttonForce.SetActive(false);
                 target.gameObject.SetActive(false);
+                
+                //triggerCameraMove.speed = forceValue;
             }
 
             forceBar.SetActive(false);
             forceBarImg.fillAmount = 0;
             forceValue = 0;
             tickColor = 0;
+
+            //triggerCameraMove.speed = 0;
         }
 
         //Debug.Log("force value is: " + forceValue);
