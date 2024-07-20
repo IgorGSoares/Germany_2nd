@@ -3,47 +3,27 @@
     "maps": [
         {
             "name": "Map",
-            "id": "50934141-da1c-4faf-b357-0f5c6bc19e6d",
+            "id": "f348dd95-7ee8-46b3-878b-9f32727b8256",
             "actions": [
                 {
-                    "name": "TouchPress",
-                    "type": "Button",
-                    "id": "68414ffd-58c3-4493-8936-f3e73a6a3b16",
-                    "expectedControlType": "Button",
+                    "name": "Hold",
+                    "type": "Value",
+                    "id": "87ca382e-da95-4d59-ad5a-cd193bccbebe",
+                    "expectedControlType": "",
                     "processors": "",
-                    "interactions": "Press(behavior=2)",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "TouchPosition",
-                    "type": "PassThrough",
-                    "id": "79670f0e-861f-4a99-b6d7-9ba7cd6b48c0",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
+                    "interactions": "Hold",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
                 {
                     "name": "",
-                    "id": "69c534e4-0442-44af-a22b-b41fb98be77c",
-                    "path": "<Touchscreen>/primaryTouch/press",
+                    "id": "03b2506d-fe48-484e-b62b-461ab09db508",
+                    "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "TouchPress",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4f8a787c-c78a-43fe-80ef-3f2448434fa5",
-                    "path": "<Touchscreen>/primaryTouch/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "TouchPosition",
+                    "action": "Hold",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
