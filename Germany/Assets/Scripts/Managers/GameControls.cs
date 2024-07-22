@@ -21,12 +21,11 @@ public class GameControls : MonoBehaviour
     [SerializeField] Transform PointB;
     // [SerializeField] GameObject joystick;
     // [SerializeField] GameObject buttonForce;
-    [SerializeField] GameObject panelControls;
+    
 
     [Space]
     [SerializeField] float forceDivisor = 2;
-    [SerializeField] TriggerCameraMove triggerCameraMove;
-
+    
     bool isPressed = false;
     float forceValue = 0f;
 
@@ -56,7 +55,8 @@ public class GameControls : MonoBehaviour
                 var dir = CalculateDirection();
                 playerRB.AddForce(dir * forceValue/forceDivisor * -1, ForceMode2D.Impulse);
                 
-                panelControls.SetActive(false);
+                GameManager.Instance.CanvasManager.ControlsPanel.SetActive(false);
+                GameManager.Instance.CanvasManager.MenuPanel.SetActive(false);
                 
                 //triggerCameraMove.speed = forceValue;
             }
