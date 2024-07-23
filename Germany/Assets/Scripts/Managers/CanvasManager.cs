@@ -11,6 +11,8 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] GameObject endGameMenu;
     [SerializeField] GameObject upPanel;
     [SerializeField] GameObject loadingPanel;
+    [SerializeField] GameObject statsPanel;
+    [SerializeField] GameObject shopPanel;
 
     [Space]
     [SerializeField] TextMeshProUGUI pointsText;
@@ -22,5 +24,36 @@ public class CanvasManager : MonoBehaviour
     public GameObject EndGameMenu => endGameMenu;
     public GameObject UpPanel => upPanel;
     public GameObject LoadingPanel => loadingPanel;
+    public GameObject ShopPanel => shopPanel;
+    public GameObject StatsPanel => statsPanel;
     public TextMeshProUGUI PointsText => pointsText;
+
+
+    //NOTE: methods
+    public void ShowGameControls()
+    {
+        if(controlsPanel.activeSelf) return;
+
+        controlsPanel.SetActive(true);
+        shopPanel.SetActive(false);
+        statsPanel.SetActive(false);
+    }
+
+    public void ShowShopPanel()
+    {
+        if(shopPanel.activeSelf) return;
+
+        controlsPanel.SetActive(false);
+        shopPanel.SetActive(true);
+        statsPanel.SetActive(false);
+    }
+
+    public void ShowStatsPanel()
+    {
+        if(statsPanel.activeSelf) return;
+
+        controlsPanel.SetActive(false);
+        shopPanel.SetActive(false);
+        statsPanel.SetActive(true);
+    }
 }

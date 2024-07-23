@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
 
     //NOTE: stats to save and modify
     [SerializeField] int coins;
+    [SerializeField] Skins[] skins/* = new Skins[0]*/;
+    [SerializeField] SpriteRenderer playerSpriteRenderer;
 
 
     //NOTE: returning properties
@@ -22,6 +24,11 @@ public class GameManager : MonoBehaviour
     
     private void Awake() {
         Instance = this;
+    }
+
+    void Start()
+    {
+        ChangeSkin();
     }
 
     public void Restart()
@@ -34,6 +41,24 @@ public class GameManager : MonoBehaviour
     {
         coins += amount;
         canvasManager.PointsText.text = "Points: " + (coins.ToString());
+    }
+
+    public void ChangeSkin()
+    {
+        Sprite currSkin = null;
+
+        foreach (var sk in skins)
+        {
+            if(sk.selected && sk.bought)
+            {
+                currSkin = sk.sprite;
+                break;
+            }
+        }
+
+        if (currSkin == null) currSkin = skins[0].sprite;
+
+        playerSpriteRenderer.sprite = currSkin;
     }
     
     IEnumerator RestartGame()
