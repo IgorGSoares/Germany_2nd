@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 
     //NOTE: managers
     [SerializeField] CanvasManager canvasManager;
+    [SerializeField] ShopManager shopManager;
 
 
     //NOTE: stats to save and modify

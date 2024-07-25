@@ -13,12 +13,34 @@ public class SkinShopUI : MonoBehaviour
     [Space]
     [SerializeField] WarningShop warningShop;
 
+    public Skins Skin => skin;
+
     void OnEnable()
     {
+        //GlobalActions
+
         price.text = skin.price.ToString();
         if(GameManager.Instance.Coins < skin.price) price.color = Color.red;
         else price.color = Color.green;
 
         image.sprite = skin.sprite;
     }
+
+    // void OnDisable()
+    // {
+        
+    // }
+
+    public void BuySkin()
+    {
+        if(GameManager.Instance.Coins < skin.price) return;
+
+        warningShop.SetSkin(skin);
+        warningShop.gameObject.SetActive(true);
+    }
+
+    // void BoughtSkin()
+    // {
+
+    // }
 }
