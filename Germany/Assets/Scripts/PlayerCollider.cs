@@ -29,6 +29,7 @@ public class PlayerCollider : MonoBehaviour
             rigidbody2D.velocity = Vector3.zero;
             gameObject.SetActive(false);
             GameManager.Instance.CanvasManager.EndGameMenu.SetActive(true);
+            GameManager.Instance.CanvasManager.UpPanel.SetActive(false);
         }
     }
 
