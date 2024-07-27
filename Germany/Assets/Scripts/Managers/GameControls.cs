@@ -37,6 +37,8 @@ public class GameControls : MonoBehaviour
     }
 
     private void Update() {
+        if(GameManager.Instance.IsPaused) return;
+
         if(isPressed)
         {
             // forceValue += 25f * Time.deltaTime;
@@ -50,15 +52,17 @@ public class GameControls : MonoBehaviour
         }
         else
         {
-            if (forceValue != 0) //TODO: adicionar direção e desativar botões
+            if (forceValue != 0)
             {
                 var dir = CalculateDirection();
                 playerRB.AddForce(dir * forceValue/forceDivisor * -1, ForceMode2D.Impulse);
                 
                 GameManager.Instance.CanvasManager.ControlsPanel.SetActive(false);
+                GameManager.Instance.CanvasManager.UpPanel.SetActive(true);
                 GameManager.Instance.CanvasManager.MenuPanel.SetActive(false);
                 
                 //triggerCameraMove.speed = forceValue;
+                GlobalActions.onGameBegins?.Invoke();
             }
 
             forceBar.SetActive(false);

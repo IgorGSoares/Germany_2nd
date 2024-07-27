@@ -13,16 +13,22 @@ public class GameManager : MonoBehaviour
 
 
     //NOTE: stats to save and modify
+    [Space]
     [SerializeField] int coins;
     [SerializeField] Skins[] skins/* = new Skins[0]*/;
     [SerializeField] SpriteRenderer playerSpriteRenderer;
 
 
+    //NOTE: variables
+    bool isPaused = false;
+
+
     //NOTE: returning properties
     public CanvasManager CanvasManager => canvasManager;
     public int Coins => coins;
+    public bool IsPaused => isPaused;
 
-    
+
     private void Awake() {
         Instance = this;
     }
@@ -60,6 +66,22 @@ public class GameManager : MonoBehaviour
         if (currSkin == null) currSkin = skins[0].sprite;
 
         playerSpriteRenderer.sprite = currSkin;
+    }
+
+    public void PauseGame()
+    {
+        isPaused = true;
+        CanvasManager.PausePanel(true);
+
+        Time.timeScale = 0;
+    }
+
+    public void ResumeGame()
+    {
+        isPaused = false;
+        CanvasManager.PausePanel(false);
+        
+        Time.timeScale = 1;
     }
     
     IEnumerator RestartGame()
