@@ -11,7 +11,7 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] GameObject endGameMenu;
     [SerializeField] GameObject upPanel;
     [SerializeField] GameObject loadingPanel;
-    [SerializeField] GameObject statsPanel;
+    [SerializeField] GameObject collectionPanel;
     [SerializeField] GameObject shopPanel;
     [SerializeField] GameObject pausePanel;
 
@@ -26,7 +26,7 @@ public class CanvasManager : MonoBehaviour
     public GameObject UpPanel => upPanel;
     public GameObject LoadingPanel => loadingPanel;
     public GameObject ShopPanel => shopPanel;
-    public GameObject StatsPanel => statsPanel;
+    public GameObject CollectionPanel => collectionPanel;
     //public GameObject PausePanel => pausePanel;
     public TextMeshProUGUI PointsText => pointsText;
 
@@ -38,7 +38,7 @@ public class CanvasManager : MonoBehaviour
 
         controlsPanel.SetActive(true);
         shopPanel.SetActive(false);
-        statsPanel.SetActive(false);
+        collectionPanel.SetActive(false);
         upPanel.SetActive(false);
     }
 
@@ -48,18 +48,18 @@ public class CanvasManager : MonoBehaviour
 
         controlsPanel.SetActive(false);
         shopPanel.SetActive(true);
-        statsPanel.SetActive(false);
+        collectionPanel.SetActive(false);
         upPanel.SetActive(false);
     }
 
-    public void ShowStatsPanel()
+    public void ShowCollectionPanel()
     {
-        if(statsPanel.activeSelf) return;
+        if(collectionPanel.activeSelf) return;
 
         controlsPanel.SetActive(false);
         shopPanel.SetActive(false);
         upPanel.SetActive(false);
-        statsPanel.SetActive(true);
+        collectionPanel.SetActive(true);
     }
 
     public void PausePanel(bool b)

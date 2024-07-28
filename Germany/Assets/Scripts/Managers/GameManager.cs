@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     //NOTE: managers
     [SerializeField] CanvasManager canvasManager;
     [SerializeField] ShopManager shopManager;
+    [SerializeField] CollectionManager collectionManager;
 
 
     //NOTE: stats to save and modify
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour
     public CanvasManager CanvasManager => canvasManager;
     public int Coins => coins;
     public bool IsPaused => isPaused;
+    public SpriteRenderer PlayerSpriteRenderer => playerSpriteRenderer;
 
 
     private void Awake() {
@@ -35,7 +37,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        ChangeSkin();
+        ChangeSkinAtStart();
     }
 
     public void Restart()
@@ -50,7 +52,7 @@ public class GameManager : MonoBehaviour
         canvasManager.PointsText.text = "Points: " + (coins.ToString());
     }
 
-    public void ChangeSkin()
+    public void ChangeSkinAtStart()
     {
         Sprite currSkin = null;
 
@@ -63,9 +65,25 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (currSkin == null) currSkin = skins[0].sprite;
+        if (currSkin == null)
+        {
+            skins[0].selected = true;
+            currSkin = skins[0].sprite;
+        }
 
         playerSpriteRenderer.sprite = currSkin;
+    }
+
+    public void ChangeCurrentSkin(string skinName)
+    {
+        foreach (var sk in skins)
+        {
+            if(sk.selected && sk.ID != skinName)
+            {
+                sk.selected = false;
+                break;
+            }
+        }
     }
 
     public void PauseGame()

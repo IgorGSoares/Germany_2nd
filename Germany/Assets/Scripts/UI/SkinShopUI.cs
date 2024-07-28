@@ -11,7 +11,7 @@ public class SkinShopUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI price;
 
     [Space]
-    [SerializeField] WarningShop warningShop;
+    [SerializeField] WarningSkin warningShop;
 
     public Skins Skin => skin;
 
@@ -35,7 +35,7 @@ public class SkinShopUI : MonoBehaviour
     {
         if(GameManager.Instance.Coins < skin.price) return;
 
-        warningShop.SetSkin(skin);
+        warningShop.SetSkinToBuy(skin);
         warningShop.gameObject.SetActive(true);
     }
 

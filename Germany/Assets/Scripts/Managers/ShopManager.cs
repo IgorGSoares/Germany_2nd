@@ -8,11 +8,20 @@ public class ShopManager : MonoBehaviour
 {
     [SerializeField] SkinShopUI[] skins;
     [SerializeField] TextMeshProUGUI points;
-    void Awake()
+    // void Awake()
+    // {
+    //     UpdateSkinsState();
+    // }
+
+    void OnEnable()
     {
         GlobalActions.onBoughtSkin += UpdateSkinsState;
-
         UpdateSkinsState();
+    }
+
+    void OnDisable()
+    {
+        GlobalActions.onBoughtSkin -= UpdateSkinsState;
     }
 
     void UpdateSkinsState()
