@@ -33,6 +33,16 @@ public class GameManager : MonoBehaviour
 
     private void Awake() {
         Instance = this;
+
+        if(!SaveSystem.HasSaveFile())
+        {
+            Debug.LogError("Nenhum save encontrado");
+            return;
+        }
+
+        SaveSystem.CheckVersionOfFile();
+
+        LoadGame();
     }
 
     void Start()
@@ -106,5 +116,55 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(5);
         SceneManager.LoadScene(0);
+    }
+
+    [ContextMenu("Save Game")]
+    public void SaveGame()
+    {
+        bool[] boughtSkins = new bool[skins.Length];
+        string equipped = "";
+        for (int i = 0; i < skins.Length; i++)
+        {
+            boughtSkins[i] = skins[i].bought;
+            if(skins[i].selected) equipped = skins[i].ID;
+        }
+
+        if(equipped == "") equipped = skins[0].ID;
+
+        SaveSystem.SaveGame(coins, boughtSkins, equipped);
+    }
+
+    [ContextMenu("Load Game")]
+    public void LoadGame()
+    {
+        GameData gameData = SaveSystem.LoadGame();
+        if(gameData == null) return;
+
+        coins = gameData.coins;
+        for (int i = 0; i < skins.Length; i++)
+        {
+            skins[i].bought = gameData.boughtSkins[i];
+            if(skins[i].ID == gameData.equippedSkin) skins[i].selected = true;
+        }
+    }
+
+    [ContextMenu("Clear Game")]
+    public void ClearGame()
+    {
+        foreach (var s in skins)
+        {
+            s.selected = false;
+            s.bought = false;
+
+            if(s.ID == "Wood")
+            {
+                s.selected = true;
+                s.bought = true;
+            }
+        }
+
+        coins = 0;
+
+        SaveSystem.ClearGame();
     }
 }
