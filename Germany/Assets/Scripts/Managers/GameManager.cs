@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
     public void IncreaseCoins(int amount)
     {
         coins += amount;
-        canvasManager.PointsText.text = "Points: " + (coins.ToString());
+        canvasManager.PointsText.text = "Coins: " + (coins.ToString());
     }
 
     public void ChangeSkinAtStart()

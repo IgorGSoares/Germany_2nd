@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 122f99e869a8bc440b39d49afeaebc65, type: 3}
   m_Name: Cherry
   m_EditorClassIdentifier: 
-  sprite: {fileID: 98689571, guid: 37354548edf96a548a2dc988f430e0bd, type: 3}
+  sprite: {fileID: 889557295, guid: f84e15dc062b41f42a1e2a0ba3f24384, type: 3}
   ID: Cherry
   nameSkin: Cherry
   description: 

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 122f99e869a8bc440b39d49afeaebc65, type: 3}
-  m_Name: White
+  m_Name: EV
   m_EditorClassIdentifier: 
-  sprite: {fileID: -1009604984, guid: f84e15dc062b41f42a1e2a0ba3f24384, type: 3}
-  ID: White
-  nameSkin: White
+  sprite: {fileID: 222661624, guid: f84e15dc062b41f42a1e2a0ba3f24384, type: 3}
+  ID: EV
+  nameSkin: Estancia Velha
   description: 
-  price: 10
+  price: 50
   bought: 0
   selected: 0
