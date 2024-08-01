@@ -10,6 +10,7 @@ public class WarningSkin : MonoBehaviour
     [SerializeField] Image image;
     [SerializeField] TextMeshProUGUI description;
     [SerializeField] TextMeshProUGUI name;
+    [SerializeField] FeedbackEffect feedbackEffect;
 
     //SkinsAquiredUI curSkinAquired;
 
@@ -19,6 +20,8 @@ public class WarningSkin : MonoBehaviour
         image.sprite = skin.sprite;
         description.text = skin.description;
         name.text = skin.nameSkin;
+
+        feedbackEffect.gameObject.SetActive(true);
     }
 
     public void SetSkinToEquip(Skins skin) //, SkinsAquiredUI skinsAquiredUI
@@ -39,7 +42,10 @@ public class WarningSkin : MonoBehaviour
             skin.bought = true;
             GlobalActions.onBoughtSkin?.Invoke();
             GameManager.Instance.SaveGame();
+            feedbackEffect.SetText("Compra Concluída");
         }
+        else feedbackEffect.SetText("Compra Inválida");
+
         gameObject.SetActive(false);
     }
 
