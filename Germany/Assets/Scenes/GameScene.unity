@@ -2630,7 +2630,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2274468124537e438eba33c1c6bcdee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countdown: 10
+  countdown: 60
   rigidbody2D: {fileID: 300018510}
 --- !u!1 &302808166
 GameObject:
@@ -13084,7 +13084,7 @@ MonoBehaviour:
   canvasManager: {fileID: 1738046345}
   shopManager: {fileID: 1738046346}
   collectionManager: {fileID: 1738046347}
-  coins: 200
+  coins: 0
   skins:
   - {fileID: 11400000, guid: 921bc897cb5d9714890f556bdc6cd816, type: 2}
   - {fileID: 11400000, guid: ae4c9ce2f598f104c9f4119e106f1d0b, type: 2}

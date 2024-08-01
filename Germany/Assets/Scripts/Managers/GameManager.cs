@@ -111,6 +111,12 @@ public class GameManager : MonoBehaviour
         
         Time.timeScale = 1;
     }
+
+    public void EndGame()
+    {
+        CanvasManager.EndGameMenu.SetActive(true);
+        SaveGame();
+    }
     
     IEnumerator RestartGame()
     {

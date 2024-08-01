@@ -38,6 +38,7 @@ public class WarningSkin : MonoBehaviour
             GameManager.Instance.IncreaseCoins(-skin.price);
             skin.bought = true;
             GlobalActions.onBoughtSkin?.Invoke();
+            GameManager.Instance.SaveGame();
         }
         gameObject.SetActive(false);
     }
@@ -48,6 +49,7 @@ public class WarningSkin : MonoBehaviour
         skin.selected = true;
         gameObject.SetActive(false);
         GlobalActions.onSkinEquipped?.Invoke(skin.ID);
+        GameManager.Instance.SaveGame();
         //GlobalActions.onBoughtSkin?.Invoke();
     }
 

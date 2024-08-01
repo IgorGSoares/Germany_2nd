@@ -12,7 +12,7 @@ public class PlayerCollider : MonoBehaviour
         if(other.gameObject.tag == "EndLevel")
         {
             gameObject.SetActive(false);
-            GameManager.Instance.CanvasManager.EndGameMenu.SetActive(true);
+            GameManager.Instance.EndGame();
             GameManager.Instance.CanvasManager.UpPanel.SetActive(false);
         }
     }

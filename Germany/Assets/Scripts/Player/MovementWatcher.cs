@@ -26,7 +26,7 @@ public class MovementWatcher : MonoBehaviour
             StopCountdown();
             rigidbody2D.velocity = Vector3.zero;
             gameObject.SetActive(false);
-            GameManager.Instance.CanvasManager.EndGameMenu.SetActive(true);
+            GameManager.Instance.EndGame();
         }
     }
 
@@ -54,6 +54,6 @@ public class MovementWatcher : MonoBehaviour
 
         //rigidbody2D.velocity = Vector3.zero;
         gameObject.SetActive(false);
-        GameManager.Instance.CanvasManager.EndGameMenu.SetActive(true);
+        GameManager.Instance.EndGame();
     }
 }
