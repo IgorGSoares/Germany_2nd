@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: -1226812581, guid: f84e15dc062b41f42a1e2a0ba3f24384, type: 3}
   ID: Wood
-  nameSkin: Wood
-  description: 
+  nameSkin: Carvalho
+  description: "Simples e pr\xE1tico para todo o iniciante."
   price: 0
   bought: 1
   selected: 1

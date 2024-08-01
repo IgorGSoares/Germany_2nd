@@ -28,12 +28,13 @@ public class ShopManager : MonoBehaviour
     {
         foreach (var skin in skins)
         {
+            skin.CheckColor();
             if(skin.Skin.bought) skin.gameObject.SetActive(false);
         }
     }
 
     void Update()
     {
-        points.text = "Points: " + GameManager.Instance.Coins.ToString();
+        points.text = /*"Points: " + */GameManager.Instance.Coins.ToString();
     }
 }

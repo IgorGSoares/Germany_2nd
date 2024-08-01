@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 8604e45edeb5f6f41b1557cea24ebcb7
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Cornerita
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 826b91a219561894d94a79942a9456b2, type: 3}
+  - {fileID: 12800000, guid: 10459a6fa933a3d44b42c6c83c87917c, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

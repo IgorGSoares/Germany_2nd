@@ -33,10 +33,16 @@ public class SkinShopUI : MonoBehaviour
 
     public void BuySkin()
     {
-        if(GameManager.Instance.Coins < skin.price) return;
+        //if(GameManager.Instance.Coins < skin.price) return;
 
         warningShop.SetSkinToBuy(skin);
         warningShop.gameObject.SetActive(true);
+    }
+
+    public void CheckColor()
+    {
+        if(GameManager.Instance.Coins < skin.price) price.color = Color.red;
+        else price.color = Color.green;
     }
 
     // void BoughtSkin()

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 889557295, guid: f84e15dc062b41f42a1e2a0ba3f24384, type: 3}
   ID: Cherry
-  nameSkin: Cherry
-  description: 
+  nameSkin: Cerejeira
+  description: "Um disco ex\xF3tico que chama a aten\xE7\xE3o pela sua cor \xFAnica."
   price: 20
   bought: 0
   selected: 0

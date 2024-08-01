@@ -36,7 +36,7 @@ public class GameControls : MonoBehaviour
         isPressed = context.action.IsPressed();
     }
 
-    private void Update() {
+    private void FixedUpdate() {
         if(GameManager.Instance.IsPaused) return;
 
         if(isPressed)
@@ -73,7 +73,7 @@ public class GameControls : MonoBehaviour
             //triggerCameraMove.speed = 0;
         }
 
-        //Debug.Log("force value is: " + forceValue);
+        Debug.Log("speed is: " + playerRB.velocity.magnitude);
     }
 
     public void SetRotationTarget(float v)

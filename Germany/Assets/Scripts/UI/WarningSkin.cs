@@ -9,6 +9,7 @@ public class WarningSkin : MonoBehaviour
     [SerializeField] Skins skin;
     [SerializeField] Image image;
     [SerializeField] TextMeshProUGUI description;
+    [SerializeField] TextMeshProUGUI name;
 
     //SkinsAquiredUI curSkinAquired;
 
@@ -17,6 +18,7 @@ public class WarningSkin : MonoBehaviour
         this.skin = skin;
         image.sprite = skin.sprite;
         description.text = skin.description;
+        name.text = skin.nameSkin;
     }
 
     public void SetSkinToEquip(Skins skin) //, SkinsAquiredUI skinsAquiredUI
@@ -24,16 +26,20 @@ public class WarningSkin : MonoBehaviour
         this.skin = skin;
         image.sprite = skin.sprite;
         description.text = skin.description;
+        name.text = skin.nameSkin;
 
         //curSkinAquired = skinsAquiredUI;
     }
 
     public void ConfirmBuy()
     {
-        GameManager.Instance.IncreaseCoins(-skin.price);
-        skin.bought = true;
+        if(skin.price <= GameManager.Instance.Coins)
+        {
+            GameManager.Instance.IncreaseCoins(-skin.price);
+            skin.bought = true;
+            GlobalActions.onBoughtSkin?.Invoke();
+        }
         gameObject.SetActive(false);
-        GlobalActions.onBoughtSkin?.Invoke();
     }
 
     public void ConfirmEquip()

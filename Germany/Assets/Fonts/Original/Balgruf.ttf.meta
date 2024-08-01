@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 16edc883f44c7f940a4c2abb83b10445
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Balgruf
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: d1ddc2eadc8f4d44f8390575965cbed0, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

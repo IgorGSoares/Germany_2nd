@@ -15,7 +15,11 @@ MonoBehaviour:
   sprite: {fileID: -1557173911, guid: f84e15dc062b41f42a1e2a0ba3f24384, type: 3}
   ID: MR
   nameSkin: Morro Reuter
-  description: 
+  description: "Tem-se poucos registros escritos sobre o pioneirismo da regi\xE3o,
+    mas estima-se que o nome seja uma homenagem \xE0 uma das primeiras fam\xEDlias
+    pioneiras, que mantinha uma estalagem para tropeiros e mercadores. Sabe-se tamb\xE9m
+    que os imigrantes da regi\xE3o vieram do oeste da Pr\xFAssia, fugindo da crise
+    ec\xF4nimica originada das guerras napole\xF4nicas. "
   price: 200
   bought: 0
   selected: 0

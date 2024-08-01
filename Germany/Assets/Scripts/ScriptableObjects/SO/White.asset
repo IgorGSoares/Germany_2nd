@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: -1009604984, guid: f84e15dc062b41f42a1e2a0ba3f24384, type: 3}
   ID: White
-  nameSkin: White
-  description: 
+  nameSkin: "Eucal\xEDpto"
+  description: "Apesar da cor, sua madeira flex\xEDvel permite criar discos diversificados."
   price: 10
   bought: 0
   selected: 0

@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 
-public class PlayerCollider : MonoBehaviour
+public class MovementWatcher : MonoBehaviour
 {
+    [SerializeField] float countdown;
     [SerializeField] Rigidbody2D rigidbody2D;
+
+    bool isMoving = false;
 
     void OnEnable()
     {
@@ -17,38 +19,40 @@ public class PlayerCollider : MonoBehaviour
         GlobalActions.onGameBegins -= StartCountDown;
     }
 
-    void StartCountDown()
+    void FixedUpdate()
     {
-        StartCoroutine(ResetGameCountdown());
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if(other.gameObject.tag == "EndLevel")
+        if(isMoving && rigidbody2D.velocity.magnitude < 0.5)
         {
+            StopCountdown();
             rigidbody2D.velocity = Vector3.zero;
             gameObject.SetActive(false);
             GameManager.Instance.CanvasManager.EndGameMenu.SetActive(true);
-            GameManager.Instance.CanvasManager.UpPanel.SetActive(false);
         }
     }
 
-    void OnTriggerExit2D(Collider2D other)
+    void StartCountDown()
     {
-        
+        if (!isMoving) isMoving = true;
+
+        StartCoroutine(ResetGameCountdown());
     }
 
-    void OnCollisionEnter(Collision other)
+    void StopCountdown()
     {
         StopCoroutine(ResetGameCountdown());
-        StartCoroutine(ResetGameCountdown());
+    }
+
+    public void ResetCountdown()
+    {
+        StopCountdown();
+        StartCountDown();
     }
 
     IEnumerator ResetGameCountdown()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(countdown);
 
-        rigidbody2D.velocity = Vector3.zero;
+        //rigidbody2D.velocity = Vector3.zero;
         gameObject.SetActive(false);
         GameManager.Instance.CanvasManager.EndGameMenu.SetActive(true);
     }

@@ -14,8 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 222661624, guid: f84e15dc062b41f42a1e2a0ba3f24384, type: 3}
   ID: EV
-  nameSkin: Estancia Velha
-  description: 
+  nameSkin: "Est\xE2ncia Velha"
+  description: "Outrora usadas para produzir c\xE2nhamo, as terras foram doadas aos
+    imigrantes pelo Imperador, sendo o primeiro deles o sapateiro Mathias Franzen.
+    A tradi\xE7\xE3o coureira da cidade, antes voltada para selas e acess\xF3rios
+    de montaria, rapidamente fez surgir uma ind\xFAstria voltada a peles, couro e
+    cal\xE7ados."
   price: 50
   bought: 0
   selected: 0

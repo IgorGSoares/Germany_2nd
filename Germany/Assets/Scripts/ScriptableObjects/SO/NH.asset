@@ -15,7 +15,10 @@ MonoBehaviour:
   sprite: {fileID: 1238834728, guid: f84e15dc062b41f42a1e2a0ba3f24384, type: 3}
   ID: NH
   nameSkin: Novo Hamburgo
-  description: 
+  description: "Hamburgerberg foi uma das col\xF4nias que surgiram quando os imigrantes
+    chegaram, com seu pr\xF3prio centro urbano. Com a falta de recursos para completar
+    a ferrovia da capital \xE0 Hamburgerberg, foi criada uma \xFAltima esta\xE7\xE3o,
+    Novo Hamburgo, que atraiu moradores e comerciantes ao seu redor."
   price: 100
   bought: 0
   selected: 0
