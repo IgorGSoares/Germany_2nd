@@ -20,8 +20,6 @@ public class WarningSkin : MonoBehaviour
         image.sprite = skin.sprite;
         description.text = skin.description;
         name.text = skin.nameSkin;
-
-        feedbackEffect.gameObject.SetActive(true);
     }
 
     public void SetSkinToEquip(Skins skin) //, SkinsAquiredUI skinsAquiredUI
@@ -45,6 +43,8 @@ public class WarningSkin : MonoBehaviour
             feedbackEffect.SetText("Compra Concluída");
         }
         else feedbackEffect.SetText("Compra Inválida");
+
+        feedbackEffect.gameObject.SetActive(true);
 
         gameObject.SetActive(false);
     }

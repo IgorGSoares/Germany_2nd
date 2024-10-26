@@ -19,8 +19,8 @@ public class FeedbackEffect : MonoBehaviour
 
     IEnumerator Deactivate()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(1.5f);
 
-        gameObject.transform.DOScale(0.01f, 2.5f).SetEase(Ease.Linear).OnComplete(() => {gameObject.SetActive(false); });
+        gameObject.transform.DOScale(0.01f, 0.5f).SetEase(Ease.OutQuint).OnComplete(() => {gameObject.SetActive(false); });
     }
 }

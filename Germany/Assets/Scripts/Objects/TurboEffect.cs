@@ -14,6 +14,9 @@ public class TurboEffect : ObjectEffects
     {
         base.ActiveEffect();
         //player.velocity += (Vector2.one * turboValue);
+
+        //player.velocity.magnitude *= turboValue;
+
         if(player.velocity.x < 0) player.velocity += Vector2.left * turboValue;
         if(player.velocity.y < 0) player.velocity += Vector2.down * turboValue;
         if(player.velocity.x > 0) player.velocity += Vector2.right * turboValue;

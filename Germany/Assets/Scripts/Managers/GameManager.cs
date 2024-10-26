@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
 
 
     //NOTE: variables
+    [Space]
+    [SerializeField] GameObject[] levels;
     bool isPaused = false;
 
 
@@ -47,6 +49,10 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        var chosenLevel = Random.Range(0, levels.Length);
+
+        levels[chosenLevel].SetActive(true);
+
         ChangeSkinAtStart();
     }
 
